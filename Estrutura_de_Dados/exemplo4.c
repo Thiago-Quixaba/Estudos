@@ -14,10 +14,10 @@ void main() {
         printf("%d - %d = %d\n", a, b, a - b);
         break;
     case '*':
-        printf("%d - %d = %d\n", a, b, a * b);
+        printf("%d * %d = %d\n", a, b, a * b);
         break;
     case '/':
-        printf("%d - %d = %d\n", a, b, a / b);
+        printf("%d / %d = %d\n", a, b, a / b);
         break;
     default:
         break;
