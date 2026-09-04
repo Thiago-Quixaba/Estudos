@@ -1,25 +1,29 @@
 #include <stdio.h>
 
 void main() {
-    int a, b;
-    char op;
+    int idade;
 
-    scanf("%d %c %d", &a, &op, &b);
+    printf("Informe sua idade: ");
+    scanf("%d", &idade);
 
-    switch (op){
-    case '+':
-        printf("%d + %d = %d\n", a, b, a + b);
-        break;
-    case '-':
-        printf("%d - %d = %d\n", a, b, a - b);
-        break;
-    case '*':
-        printf("%d * %d = %d\n", a, b, a * b);
-        break;
-    case '/':
-        printf("%d / %d = %d\n", a, b, a / b);
-        break;
-    default:
-        break;
+    switch (idade){
+        case 0 ... 4:
+            printf("Voce eh um bebe.\n");
+            break;
+        case 5 ... 12:
+            printf("Voce eh uma criança.\n");
+            break;
+        case 13 ... 21:
+            printf("Voce eh um adolescente.\n");
+            break;
+        case 22 ... 60:
+            printf("voce eh um adulto.");
+            break;
+        case 61 ... 120:
+            printf("Voce eh um idoso.");
+            break;
+        default:
+            printf("Voce nao esta vivo.");
+            break;
     }
 }
