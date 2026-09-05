@@ -1,67 +1,61 @@
 package conta;
 
+import java.util.function.*;
+
 public class Conta {
-    private int agencia;
-    private int numeroConta;
-    private double saldo;
-    private String titular;
+    private int agenciaValue;
+    private int numeroContaValue;
+    private double saldoValue;
+    private String titularValue;
 
     public Conta(int agencia, int numeroConta, double saldo, String titular) {
-        this.agencia = agencia;
-        this.numeroConta = numeroConta;
-        this.saldo = saldo;
-        this.titular = titular;
+        this.agenciaValue = agencia;
+        this.numeroContaValue = numeroConta;
+        this.saldoValue = saldo;
+        this.titularValue = titular;
     }
 
     public String toString() {
-        return "\033[1mTitular: \033[0m" + this.titular + "\n\033[1mAgencia: \033[0m" + this.agencia + "\n\033[1mNumero da Conta: \033[0m" + this.numeroConta + "\n\033[1mSaldo: \033[0m" + this.saldo;
+        return "\033[1mTitular: \033[0m" + this.titularValue + "\n\033[1mAgencia: \033[0m" + this.agenciaValue + "\n\033[1mNumero da Conta: \033[0m" + this.numeroContaValue + "\n\033[1mSaldo: \033[0m" + this.saldoValue;
     }
 
     // getters e setters
 
-    public int getAgencia() {
-        return this.agencia;
-    }
+    public final Supplier<Integer> agencia = () -> this.agenciaValue;
+
+    public final Supplier<Integer> numeroConta = () -> this.numeroContaValue;
+
+    public final Supplier<Double> saldo = () -> this.saldoValue;
+    
+    public final Supplier<String> titular = () -> this.titularValue;
 
     public boolean setAgencia(int newAgencia) {
         if (newAgencia >= 0) {
-            this.agencia = newAgencia;
+            this.agenciaValue = newAgencia;
             return true;
         }
         return false;
-    }
-
-    public int getNumeroConta() {
-        return this.numeroConta;
     }
 
     public boolean setNumeroConta(int newNumeroConta) {
         if (newNumeroConta >= 0) {
-            this.numeroConta = newNumeroConta;
+            this.numeroContaValue = newNumeroConta;
             return true;
         }
         return false;
-    }
-
-    public double getSaldo() {
-        return this.saldo;
     }
 
     public boolean setSaldo(double newSaldo) {
         if (newSaldo >= 0) {
-            this.saldo = newSaldo;
+            this.saldoValue = newSaldo;
             return true;
         }
         return false;
     }
 
-    public String getTitular() {
-        return this.titular;
-    }
-
     public boolean setTitular(String newTitular) {
         if (!newTitular.isBlank()) {
-            this.titular = newTitular;
+            this.titularValue = newTitular;
             return true;
         }
         return false;
@@ -69,25 +63,22 @@ public class Conta {
 
     // Utilitarios
 
-    public void extrato() {
-        System.out.printf("\033[1m===== EXTRATO =====\033[0m\n\033[1mTitular: \033[0m%s\n\033[1mSaldo: \033[0m%.2f\n", this.titular, this.saldo);
-    }
+    
+    public final Runnable verExtrato = () -> System.out.printf("\033[1m===== EXTRATO =====\033[0m\n\033[1mTitular: \033[0m%s\n\033[1mSaldo: \033[0m%.2f\n", this.titularValue, this.saldoValue);
 
     public boolean depositar(double value) {
         if (value >= 0) {
-            this.saldo += value;
+            this.saldoValue += value;
             return true;
         }
         return false;
     }
 
     public boolean sacar(double value) {
-        if (value >= 0 && value <= this.saldo) {
-            this.saldo -= value;
+        if (value >= 0 && value <= this.saldoValue) {
+            this.saldoValue -= value;
             return true;
         }
         return false;
     }
-
-
 }
