@@ -9,5 +9,5 @@ void main() {
         scanf("%d", &idade);
         media += idade;
     }
-    printf("Idade: %.2f\n", media / qtd);
+    printf("Idade: %f\n", media / qtd);
 }
