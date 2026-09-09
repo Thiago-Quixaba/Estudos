@@ -9,5 +9,6 @@ void main() {
             pares++;
         }
     }
+    
     printf("Pares: %d \tImpares: %d\n", pares, 10 - pares);
 }
