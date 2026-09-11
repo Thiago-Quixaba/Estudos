@@ -1,14 +1,14 @@
-package conta;
+package br.com.projeto;
 
 import java.util.function.*;
 
-public class Conta {
+public class ContaBancaria {
     private int agenciaValue;
     private int numeroContaValue;
     private double saldoValue;
-    private String titularValue;
+    private Cliente titularValue;
 
-    public Conta(int agencia, int numeroConta, double saldo, String titular) {
+    public ContaBancaria(int agencia, int numeroConta, double saldo, Cliente titular) {
         this.agenciaValue = agencia;
         this.numeroContaValue = numeroConta;
         this.saldoValue = saldo;
@@ -27,7 +27,7 @@ public class Conta {
 
     public final Supplier<Double> saldo = () -> this.saldoValue;
     
-    public final Supplier<String> titular = () -> this.titularValue;
+    public final Supplier<Cliente> titular = () -> this.titularValue;
 
     public boolean setAgencia(int newAgencia) {
         if (newAgencia >= 0) {
@@ -53,8 +53,8 @@ public class Conta {
         return false;
     }
 
-    public boolean setTitular(String newTitular) {
-        if (!newTitular.isBlank()) {
+    public boolean setTitular(Cliente newTitular) {
+        if (newTitular != null) {
             this.titularValue = newTitular;
             return true;
         }
@@ -67,7 +67,7 @@ public class Conta {
     public final Runnable verExtrato = () -> System.out.printf("\033[1m===== EXTRATO =====\033[0m\n\033[1mTitular: \033[0m%s\n\033[1mSaldo: \033[0m%.2f\n", this.titularValue, this.saldoValue);
 
     public boolean depositar(double value) {
-        if (value >= 0) {
+        if (value > 0) {
             this.saldoValue += value;
             return true;
         }
@@ -75,10 +75,33 @@ public class Conta {
     }
 
     public boolean sacar(double value) {
-        if (value >= 0 && value <= this.saldoValue) {
+        if (value > 0 && value <= this.saldoValue) {
             this.saldoValue -= value;
             return true;
         }
         return false;
     }
+
+    public boolean receber(double value, ContaBancaria origem) {
+        if (origem != null) {
+                if (value > 0 && value <= origem.saldoValue) {
+                this.saldoValue += value;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean transferir(double value, ContaBancaria destino) {
+        if (destino != null) {
+            if (value > 0 && value <= this.saldoValue) {
+                this.saldoValue -= value;
+                destino.receber(value, this);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }
