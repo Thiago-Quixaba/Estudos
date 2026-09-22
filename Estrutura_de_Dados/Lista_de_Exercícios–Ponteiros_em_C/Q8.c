@@ -4,11 +4,16 @@ void main() {
     char palavra[101], *p = palavra;
     int letras = 0;
 
-    scanf(" %s", palavra);
+    fgets(palavra, sizeof(palavra), stdin);
 
     for (p; *p != '\0'; p++) {
-        letras++;
+        if (*p != ' ' && *p != '\n' && *p != '\t') {
+            letras++;
+        } else if (*p == '\n') {
+            *p = '\0';
+            break;
+        }
     }
 
-    printf("Quantidade de letras: %d\n", letras);
+    printf("Quantidade de letras da palavra \"%s\": %d\n", palavra, letras);
 }
