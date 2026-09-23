@@ -1,13 +1,11 @@
 #include <stdio.h>
 
-void main() {
-    char palavra[101];
+void contar_vogal(char *palavra) {
     int a = 0, e = 0, i = 0, o = 0, u = 0;
+    char *index = palavra;
 
-    scanf(" %100s", palavra);
-    
-    for (int j = 0; j < 101; j++) {
-        switch (palavra[j]) {
+    for (index; *index != '\0'; index++) {
+        switch (*index) {
             case 'a': case 'A': a++; break;
             case 'e': case 'E': e++; break;
             case 'i': case 'I': i++; break;
@@ -16,5 +14,11 @@ void main() {
             default: break;
         }
     }
+
     printf("A: %d\tE: %d\tI: %d\tO: %d\tU: %d\n", a, e, i, o, u);
+}
+
+void main() {
+    char string[] = "hello, world!";
+    contar_vogal(&string[0]);
 }
