@@ -22,6 +22,5 @@ void main() {
     int y;
     scanf("%d", &y);
 
-    printf("%f", exemplo18(2, -2));
     printf("%f", exemplo18(0, 0));
 }

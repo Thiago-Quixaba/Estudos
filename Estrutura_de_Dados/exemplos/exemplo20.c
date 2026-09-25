@@ -12,6 +12,5 @@ int exemplo20(char *palavra, char alvo) {
 }
 
 void main() {
-
     printf("%d", exemplo20("", ''));
 }
