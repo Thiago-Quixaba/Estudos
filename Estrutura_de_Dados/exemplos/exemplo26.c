@@ -72,7 +72,6 @@ void main() {
     matrizB.matriz[1][0] = 7;
     matrizB.matriz[1][1] = 8;
 
-
     imprimirMatriz(somaMatrizes(matrizA, matrizB));
     printf("\n");
     imprimirMatriz(MultiplicacaoMatrizes(matrizA, matrizB));
