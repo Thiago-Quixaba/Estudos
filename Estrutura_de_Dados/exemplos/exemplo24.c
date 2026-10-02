@@ -30,15 +30,22 @@ void imprimir(Paciente p) {
     printf("O peso do paciente é %.2f;\n", p.peso);
 } 
 
+void verIMC(Paciente p) {
+    float imc = p.peso / p.altura;
+    printf("O IMC do paciente é %.2f;\n", imc);
+    if (imc < 18.5) {
+        printf("O paciente está abaixo do peso\n");
+    } else if (imc <= 24.9) {
+        printf("O paciente está normal\n");
+    } else if (imc <= 29.9) {
+        printf("O paciente está acima do peso\n");
+    } else {
+        printf("O paciente está obeso\n");
+    }
+}
+
 void main() {
-    Paciente pacientes[10];
-    for (int i = 0; i < 10; i++) {
-        pacientes[i] = criarPaciente();
-        printf("\n");
-        imprimir(pacientes[0]);
-        printf("\n");
-    }
-    for (int i = 0; i < 10; i++) {
-        
-    }
+    Paciente p = criarPaciente();
+
+    verIMC(p);
 }
