@@ -43,7 +43,6 @@ Tmatriz MultiplicacaoMatrizes(Tmatriz matrizA, Tmatriz matrizB) {
                     newMatriz.matriz[i][j] += matrizA.matriz[i][l] * matrizB.matriz[l][j];
                 }
             }
-            
         }
 
         return newMatriz;
