@@ -3,8 +3,7 @@
 
 struct lista {
     int item;
-    struct lista* next;
-    struct lista* prev;
+    struct lista* next, prev;
 };
 
 typedef struct lista Lista;
