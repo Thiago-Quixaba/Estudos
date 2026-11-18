@@ -6,7 +6,7 @@ import java.util.Locale;
 public class Main {
     public static void main(String[] args) throws Exception {
         Scanner input = new Scanner(System.in).useLocale(Locale.US);
-        ContaBancaria[] contas = {new ContaBancaria("", 0), new ContaBancaria("", 0)};
+        ContaBancaria[] contas = {new ContaBancaria(null, 0), new ContaBancaria(null, 0)};
 
         for (ContaBancaria conta : contas) {
             System.out.print("Informe o nome do Titular: ");

@@ -7,10 +7,10 @@ public class ContaBancaria {
     private double saldoValue;
 
     public ContaBancaria(String newTitular, double newSaldo) {
-        if (!newTitular.isBlank()) {
-            this.titularValue = newTitular;
+        if (titularValue == null || newTitular.isBlank()) {
+            this.titularValue = "<NO NAME>";
         } else {
-            this.titularValue = "NO NAME";
+            this.titularValue = newTitular; 
         }
 
         if (newSaldo >= 0) {
@@ -28,7 +28,7 @@ public class ContaBancaria {
     public final Supplier<Double> saldo = () -> this.saldoValue;
 
     public boolean setTitular(String newTitular) {
-        if (!newTitular.isBlank()) {
+        if (titularValue != null || !newTitular.isBlank()) {
             this.titularValue = newTitular;
             return true;
         }
